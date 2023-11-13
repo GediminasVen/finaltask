@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Common {
+
     public static void setUpChrome() {
         Driver.setChromeDriver();
     }
@@ -31,8 +32,8 @@ public class Common {
         return Driver.getDriver().findElements(locator);
     }
 
-    public static void sendKeysToElement(By locator, String text) {
-        getElement(locator).sendKeys(text);
+    public static void sendKeysToElement(By locator, String name) {
+        getElement(locator).sendKeys(name);
     }
 
     public static String getTextFromElement(By locator) {
