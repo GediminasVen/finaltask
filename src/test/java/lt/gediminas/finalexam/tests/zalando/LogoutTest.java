@@ -1,40 +1,39 @@
 package lt.gediminas.finalexam.tests.zalando;
 
-import lt.gediminas.finalexam.pages.zalando.LoginPage;
+import lt.gediminas.finalexam.pages.zalando.LogoutPage;
 import lt.gediminas.finalexam.tests.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class LoginTest extends TestBase {
+public class LogoutTest extends TestBase {
     @BeforeMethod
-
     @Override
     public void setUp() {
-        LoginPage.openChrome("https://www.zalando.lt/");
+        LogoutPage.openChrome("https://www.zalando.lt/moterims-home/");
     }
 
-
-    @DataProvider(name = "loginDataInput")
+    @DataProvider(name = "loginDataInputValid")
     public Object[][] provideUserAccount() {
         return new Object[][]{
-                {"venslovaitisgediminas@yahoo.lt", "Abece2le1$2s$3Spsswtr3!"},
-                {"Gediminas@gediminas.gediminas", " "},
-                {" @email.com", "abc123!!3qwerty"}
+                {"venslovaitisgediminas@yahoo.lt", "Abece2le1$2s$3Spsswtr3!"}
         };
     }
 
-    @Test(dataProvider = "loginDataInput")
+    @Test(dataProvider = "loginDataInputValid")
     public void testLoginFunctionality(String email, String password) {
-        String expectedResult = "Mano paskyra";
+        String expectedResult = "Registruotis dabar";
         String actualResult;
 
-        LoginPage.clickOnLoginButton();
-        LoginPage.enterEmailForLogin(email);
-        LoginPage.enterPasswordForLogin(password);
-        LoginPage.clickOnLoginButtonWhenDataEntered();
-        actualResult = LoginPage.checkLoginAttempt();
+        LogoutPage.clickOnLoginButton();
+        LogoutPage.enterEmailForLogin(email);
+        LogoutPage.enterPasswordForLogin(password);
+        LogoutPage.clickOnLoginButtonWhenDataEntered();
+        LogoutPage.hoverOverElement();
+        LogoutPage.clickOnLogout();
+
+        actualResult = LogoutPage.checkLogOut();
 
         Assert.assertTrue(
                 actualResult.contains(expectedResult),
@@ -42,8 +41,5 @@ public class LoginTest extends TestBase {
                         actualResult, expectedResult
                 )
         );
-
     }
-
-
 }

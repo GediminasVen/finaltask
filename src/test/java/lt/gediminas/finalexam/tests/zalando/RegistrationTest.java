@@ -14,6 +14,7 @@ public class RegistrationTest extends TestBase {
     public void setUp() {
         RegistrationPage.openChrome("https://www.zalando.lt/");
     }
+
     @DataProvider(name = "registrationFields")
     public Object[][] provideDataForRegistration() {
         return new Object[][]{
