@@ -20,6 +20,7 @@ public class Common {
     public static void openUrl(String url) {
         Driver.getDriver().get(url);
     }
+
     public static void quitDriver() {
         Driver.quitDriver();
     }
@@ -99,16 +100,24 @@ public class Common {
     public static void selectOptionByValue(By locator, String selectValue) {
         getSelect(locator).selectByValue(selectValue);
     }
+
     public static void selectOptionByIndex(By locator, int index) {
         getSelect(locator).selectByIndex(index);
     }
 
-    private static Actions getActions(){
+    private static Actions getActions() {
         return new Actions(Driver.getDriver());
+    }
+
+    public static void clickWithActions(By locator) {
+        getActions()
+                .moveToElement(getElement(locator))
+                .click(getElement(locator))
+                .perform();
     }
     public static void doubleClickWithActions(By locator) {
         getActions()
-//                .moveToElement(getElement(locator))
+                .moveToElement(getElement(locator))
                 .doubleClick(getElement(locator))
                 .perform();
     }
@@ -131,7 +140,7 @@ public class Common {
             String actual = element.getAttribute("value");
             for (String value : values) {
                 String currentValue = actual;
-                if (currentValue.equals(value)){
+                if (currentValue.equals(value)) {
                     actions.click(element);
                 }
             }
@@ -139,4 +148,5 @@ public class Common {
         actions.perform();
     }
 }
+
 

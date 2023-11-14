@@ -23,7 +23,7 @@ public class Driver {
         driver = new ChromeDriver(options);
 
         driver.get("chrome://settings/");
-        ((JavascriptExecutor) driver).executeScript("chrome.settingsPrivate.setDefaultZoom(0.7)");
+        ((JavascriptExecutor) driver).executeScript("chrome.settingsPrivate.setDefaultZoom(0.5)");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
     }
 
