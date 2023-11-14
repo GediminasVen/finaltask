@@ -1,6 +1,5 @@
 package lt.gediminas.finalexam.tests.zalando;
 
-import lt.gediminas.finalexam.pages.Common;
 import lt.gediminas.finalexam.pages.zalando.LoginPage;
 import lt.gediminas.finalexam.tests.TestBase;
 import org.testng.Assert;
@@ -17,7 +16,7 @@ public class LoginTest extends TestBase {
     }
 
 
-    @DataProvider(name = "loginValidInput")
+    @DataProvider(name = "loginDataInput")
     public Object[][] provideUserAccount() {
         return new Object[][]{
                 {"venslovaitisgediminas@yahoo.lt", "Abece2le1$2s$3Spsswtr3!"},
@@ -25,15 +24,16 @@ public class LoginTest extends TestBase {
                 {" @email.com", "abc123!!3qwerty"}
         };
     }
-    @Test(dataProvider = "loginValidInput")
+    @Test(dataProvider = "loginDataInput")
     public void testLoginFunctionality(String email, String password) {
-        String expectedResult = "";
-        String actualResult = "";
+        String expectedResult = "Mano paskyra";
+        String actualResult;
 
         LoginPage.clickOnLoginButton();
         LoginPage.enterEmailForLogin(email);
         LoginPage.enterPasswordForLogin(password);
         LoginPage.clickOnLoginButtonWhenDataEntered();
+        actualResult = LoginPage.checkLoginAttempt();
 
         Assert.assertTrue(
                 actualResult.contains(expectedResult),
@@ -41,6 +41,7 @@ public class LoginTest extends TestBase {
                         actualResult, expectedResult
                 )
         );
+
     }
 
 

@@ -24,4 +24,8 @@ public class LoginPage {
     public static void clickOnLoginButtonWhenDataEntered() {
         Common.clickOnElement(Locator.Zalando.Login.clickOnLoginWithDataEntered);
     }
+
+    public static String checkLoginAttempt() {
+        return Common.getTextFromElement(Locator.Zalando.Login.checkLoginAttempt);
+    }
 }
