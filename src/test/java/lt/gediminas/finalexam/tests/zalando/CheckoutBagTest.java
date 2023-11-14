@@ -16,7 +16,7 @@ public class CheckoutBagTest extends TestBase {
     @Test
     public void testCheckOutBag() {
         String expectedResult = "Krepšelyje";
-        String actualResult = "";
+        String actualResult;
 
         CheckoutBagPage.selectInventory();
         CheckoutBagPage.selectSpecificInventory();
@@ -26,6 +26,28 @@ public class CheckoutBagTest extends TestBase {
         CheckoutBagPage.clickOnCartItems();
 
         actualResult = CheckoutBagPage.getCheckOutBag();
+
+        Assert.assertTrue(
+                actualResult.contains(expectedResult),
+                "\nActual: %s, \nExpected: %s".formatted(
+                        actualResult, expectedResult
+                )
+        );
+    }
+    @Test
+    public void testCheckOutBagRemovedItems() {
+        String expectedResult = "Eikite";
+        String actualResult;
+
+        CheckoutBagPage.selectInventory();
+        CheckoutBagPage.selectSpecificInventory();
+        CheckoutBagPage.clickOnAddToCart();
+        CheckoutBagPage.selectSize();
+        CheckoutBagPage.clickOnAddToCart();
+        CheckoutBagPage.clickOnCartItems();
+        CheckoutBagPage.removeItem();
+
+        actualResult = CheckoutBagPage.confirmEmptyCart();
 
         Assert.assertTrue(
                 actualResult.contains(expectedResult),

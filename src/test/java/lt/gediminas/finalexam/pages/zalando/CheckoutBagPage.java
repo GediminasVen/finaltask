@@ -35,4 +35,12 @@ public class CheckoutBagPage {
     public static void clickOnCartItems() {
         Common.clickWithActions(Locator.Zalando.CheckOutBag.checkCart);
     }
+
+    public static void removeItem() {
+        Common.clickWithActions(Locator.Zalando.CheckOutBag.removeItemFromCart);
+    }
+
+    public static String confirmEmptyCart() {
+        return Common.getTextFromElement(Locator.Zalando.CheckOutBag.confirmEmptyCart);
+    }
 }
