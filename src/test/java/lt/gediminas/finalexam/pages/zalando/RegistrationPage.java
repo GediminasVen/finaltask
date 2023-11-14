@@ -2,12 +2,18 @@ package lt.gediminas.finalexam.pages.zalando;
 
 import lt.gediminas.finalexam.pages.Common;
 import lt.gediminas.finalexam.pages.Locator;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class RegistrationPage extends Common{
+import java.time.Duration;
+
+
+public class RegistrationPage extends Common {
     public static void openChrome(String url) {
         Common.setUpChrome();
         Common.openUrl(url);
     }
+
     public static void clickOnRegister() {
         Common.clickOnElement(Locator.Zalando.Registration.ClickOnRegistration);
         Common.clickOnElement(Locator.Zalando.Registration.ClickOnRegistrationWhenVisible);
@@ -29,6 +35,12 @@ public class RegistrationPage extends Common{
         Common.sendKeysToElement(Locator.Zalando.Registration.enterPassword, password);
     }
 
+    public static void clickOnFinalRegistrationButton() {
+        Common.clickOnElementWhenAvailableCustomised(Locator.Zalando.Registration.clickOnRegistrationFinal, 1);
+
+
+    }
+
     public static String isRegistrationSuccessful() {
         return Common.getTextFromElement(Locator.Zalando.Registration.readSuccesfulRegistration);
     }
@@ -36,4 +48,5 @@ public class RegistrationPage extends Common{
     public static void clickOnRegisterCheckProvidedData() {
         Common.clickOnElementWhenAvailableCustomised(Locator.Zalando.Registration.clickOnRegistrationAfterDataProvided, 5);
     }
+
 }

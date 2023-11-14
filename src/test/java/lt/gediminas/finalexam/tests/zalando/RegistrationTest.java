@@ -2,8 +2,6 @@ package lt.gediminas.finalexam.tests.zalando;
 
 import lt.gediminas.finalexam.pages.zalando.RegistrationPage;
 import lt.gediminas.finalexam.tests.TestBase;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -16,12 +14,6 @@ public class RegistrationTest extends TestBase {
     public void setUp() {
         RegistrationPage.openChrome("https://www.zalando.lt/");
     }
-
-    @Test
-    public void testClickOnRegistration() {
-        RegistrationPage.clickOnRegister();
-    }
-
     @DataProvider(name = "registrationFields")
     public Object[][] provideDataForRegistration() {
         return new Object[][]{
@@ -31,21 +23,22 @@ public class RegistrationTest extends TestBase {
                 {"Gediminas", "2[", " @one.lt", " "},
                 {" ", " ", " ", " "},
 
-
         };
     }
 
     @Test(dataProvider = "registrationFields")
     public void testDataForRegistration(String name, String lastname, String email, String password) {
+        String actualResult;
+        String expectedResult = "Mano paskyra";
+
         RegistrationPage.clickOnRegister();
         RegistrationPage.enterName(name);
         RegistrationPage.enterLastname(lastname);
         RegistrationPage.enterEmail(email);
         RegistrationPage.enterPassword(password);
-        RegistrationPage.clickOnRegisterCheckProvidedData();
-        String actualResult;
+        RegistrationPage.clickOnFinalRegistrationButton();
+
         actualResult = RegistrationPage.isRegistrationSuccessful();
-        Assert.assertTrue(RegistrationPage.isRegistrationSuccessful().contains("Stiprus")
-                , "Stiprus slaptažodis.");
+        Assert.assertEquals(expectedResult, actualResult);
     }
 }
