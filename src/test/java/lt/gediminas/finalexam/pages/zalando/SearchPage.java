@@ -2,7 +2,6 @@ package lt.gediminas.finalexam.pages.zalando;
 
 import lt.gediminas.finalexam.pages.Common;
 import lt.gediminas.finalexam.pages.Locator;
-import org.openqa.selenium.Keys;
 
 public class SearchPage {
     public static void openChrome(String url) {
@@ -25,8 +24,8 @@ public class SearchPage {
         return Common.getTextFromElement(Locator.Zalando.Search.printedValueAdidas);
     }
 
-    public static String readSearchValueShoes() {
-        return Common.getTextFromElement(Locator.Zalando.Search.printedValueNothing);
+    public static String readSearchValueCMP() {
+        return Common.getTextFromElement(Locator.Zalando.Search.printedValueCMP);
     }
 
 }

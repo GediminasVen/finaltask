@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Common {
 
@@ -115,6 +116,7 @@ public class Common {
                 .click(getElement(locator))
                 .perform();
     }
+
     public static void doubleClickWithActions(By locator) {
         getActions()
                 .moveToElement(getElement(locator))
@@ -146,6 +148,31 @@ public class Common {
             }
         }
         actions.perform();
+    }
+
+    public static void hoverOverElement(By locator) {
+        getActions()
+                .moveToElement(getElement(locator))
+                .perform();
+    }
+
+    public static void sendKeysWithActions(By locator, String keysToSend) {
+        Actions actions = getActions();
+        actions.sendKeys(getElement(locator), keysToSend).build().perform();
+    }
+
+    public static void setImplicitWait(int seconds) {
+        Driver.getDriver().manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+    }
+
+    public static void resetImplicitWait() {
+        Driver.getDriver().manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+    }
+
+    public static void enterTextWithWait(By locator, String text, int implicitWaitSeconds) {
+        setImplicitWait(implicitWaitSeconds);
+        sendKeysWithActions(locator, text);
+        resetImplicitWait();
     }
 }
 

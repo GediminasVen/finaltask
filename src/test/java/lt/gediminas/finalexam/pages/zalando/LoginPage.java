@@ -14,7 +14,7 @@ public class LoginPage {
     }
 
     public static void enterEmailForLogin(String email) {
-        Common.sendKeysToElement(Locator.Zalando.Login.enterEmail, email );
+        Common.enterTextWithWait(Locator.Zalando.Login.enterEmail, email, 3);
     }
 
     public static void enterPasswordForLogin(String password) {

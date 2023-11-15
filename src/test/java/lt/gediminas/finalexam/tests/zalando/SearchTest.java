@@ -43,12 +43,12 @@ public class SearchTest extends TestBase {
         );
     }
     @Test
-    public void testSearchResultForNothing() {
-        String searchValue = " ";
+    public void testSearchResultForCMP() {
+        String searchValue = "CMP";
         String actualValue;
 
         SearchPage.enterValueToSearch(searchValue);
-        actualValue = SearchPage.readSearchValueShoes();
+        actualValue = SearchPage.readSearchValueCMP();
         Assert.assertTrue(
                 actualValue.contains(searchValue),
                 "\nActual: %s, \nExpected: %s".formatted(

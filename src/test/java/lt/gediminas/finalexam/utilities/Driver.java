@@ -30,6 +30,7 @@ public class Driver {
     public static void setSafariDriver() {
         WebDriverManager.safaridriver().setup();
         driver = new SafariDriver();
+
     }
 
     public static WebDriver getDriver() {

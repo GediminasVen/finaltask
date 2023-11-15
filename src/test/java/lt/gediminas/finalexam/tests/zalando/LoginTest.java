@@ -19,7 +19,7 @@ public class LoginTest extends TestBase {
     @DataProvider(name = "loginDataInput")
     public Object[][] provideUserAccount() {
         return new Object[][]{
-                {"venslovaitisgediminas@yahoo.lt", "Abece2le1$2s$3Spsswtr3!"},
+                {"venslovaitigediminas@yahoo.lt", "Abece2le1$2s$3Spsswtr3!"},
                 {"Gediminas@gediminas.gediminas", " "},
                 {" @email.com", "abc123!!3qwerty"}
         };
