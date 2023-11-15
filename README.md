@@ -1,6 +1,6 @@
 # Zalando.lt E-commerce Website Automated Tests
 
-This repository contains automated tests for the Zalando.lt e-commerce website. The tests cover the functionality of various pages, including the Cart, Login, Logout, Registration, and Search pages.
+This repository contains automated tests for the Zalando.lt e-commerce website. The tests cover the functionality of various pages, including the Cart, Login, Logout, Registration, Account deletion and Search pages.
 
 ## Automated Test Scenarios
 
